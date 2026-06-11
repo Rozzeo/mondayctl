@@ -2,6 +2,8 @@
 
 A `gh`-style CLI for monday.com boards and items — built for humans, scripts, and AI agents. ⚡
 
+![mondayctl demo](https://raw.githubusercontent.com/Rozzeo/mondayctl/master/docs/demo.gif)
+
 ## Why
 
 monday.com ships an official MCP server and an official CLI (`mapps`), but the latter is only for app deployment — there is no first-party CLI for working with your actual data. `mondayctl` fills that gap:

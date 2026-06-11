@@ -6,12 +6,14 @@ export function printJson(value: unknown): void {
 }
 
 // Minimal column-aligned table; no dependency, handles empty input.
+// Headers are the union across all rows: rows can have sparse keys
+// (e.g. items where some column values are empty).
 export function printTable(rows: Array<Record<string, string>>): void {
   if (rows.length === 0) {
     process.stdout.write("(empty)\n");
     return;
   }
-  const headers = Object.keys(rows[0]!);
+  const headers = [...new Set(rows.flatMap((r) => Object.keys(r)))];
   const widths = headers.map((h) =>
     Math.max(h.length, ...rows.map((r) => (r[h] ?? "").length)),
   );
