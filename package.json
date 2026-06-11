@@ -1,0 +1,38 @@
+{
+  "name": "mondayctl",
+  "version": "0.1.0",
+  "description": "gh-style CLI for monday.com boards and items. Agent-friendly: stable JSON output, zero token overhead.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "mondayctl": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "monday.com",
+    "cli",
+    "ai-agent",
+    "claude",
+    "automation"
+  ],
+  "dependencies": {
+    "commander": "^14.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8"
+  }
+}
