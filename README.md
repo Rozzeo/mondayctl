@@ -78,6 +78,7 @@ Updated item 8812741203
 | `columns <boardId>` | List board columns (ids needed for `--column` flags) | `--json` |
 | `create <boardId> <name>` | Create an item | `-c, --column <key=value>` (repeatable), `--json` |
 | `update <boardId> <itemId>` | Update item column values | `-c, --column <key=value>` (repeatable, required), `--json` |
+| `delete <itemId...>` | Delete one or more items (irreversible) | `--json` |
 
 ## Usage with AI agents
 
@@ -109,6 +110,12 @@ mondayctl update <boardId> <itemId> \
   -c text_col="Plain string value" \
   -c status='{"label":"Done"}' \
   -c date4='{"date":"2026-06-11"}'
+```
+
+Deleting items (irreversible):
+
+```sh
+mondayctl delete <itemId> [<itemId>...]
 ```
 
 Any value starting with `{` or `[` is parsed as JSON; everything else passes through as a string. Run `mondayctl columns <boardId>` to discover the column ids and types for a board.

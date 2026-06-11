@@ -62,6 +62,14 @@ describe("gql", () => {
   });
 });
 
+describe("deleteItem", () => {
+  it("sends the item id and returns the deleted id", async () => {
+    const { deleteItem } = await import("../src/api.js");
+    vi.stubGlobal("fetch", mockFetch({ data: { delete_item: { id: "42" } } }));
+    await expect(deleteItem("42")).resolves.toEqual({ delete_item: { id: "42" } });
+  });
+});
+
 describe("listItems", () => {
   it("throws a clear error for an unknown board", async () => {
     vi.stubGlobal("fetch", mockFetch({ data: { boards: [] } }));

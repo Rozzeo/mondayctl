@@ -1,6 +1,6 @@
 {
   "name": "mondayctl",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "gh-style CLI for monday.com boards and items. Agent-friendly: stable JSON output, zero token overhead.",
   "type": "module",
   "license": "MIT",

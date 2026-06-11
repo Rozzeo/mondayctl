@@ -17,6 +17,7 @@ mondayctl is a gh-style CLI for monday.com (boards, items, search, create, updat
 | `columns <boardId>` | `mondayctl columns 123456 --json` — list column ids, titles, and types |
 | `create <boardId> <name>` | `mondayctl create 123456 "Ship v2" -c status='{"label":"Done"}' --json` |
 | `update <boardId> <itemId>` | `mondayctl update 123456 789 -c text_col=value --json` |
+| `delete <itemId...>` | `mondayctl delete 789 790 --json` — irreversible; always confirm with the user first |
 | `auth <token>` | `mondayctl auth abc123` — save the API token |
 
 Column values (`-c key=value`, repeatable; required on `update`):

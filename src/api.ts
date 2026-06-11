@@ -145,6 +145,13 @@ export function updateItem(
   );
 }
 
+export function deleteItem(itemId: string): Promise<{ delete_item: { id: string } }> {
+  return gql(
+    `mutation ($item: ID!) { delete_item(item_id: $item) { id } }`,
+    { item: itemId },
+  );
+}
+
 export interface ColumnInfo {
   id: string;
   title: string;

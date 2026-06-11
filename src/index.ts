@@ -4,7 +4,7 @@
 // the tool composes with jq, scripts, CI, and AI agents without screen-scraping.
 
 import { Command } from "commander";
-import { createItem, listBoards, listColumns, listItems, me, MondayError, updateItem } from "./api.js";
+import { createItem, deleteItem, listBoards, listColumns, listItems, me, MondayError, updateItem } from "./api.js";
 import { saveToken } from "./config.js";
 import { parseColumns, printJson, printTable } from "./format.js";
 
@@ -118,6 +118,20 @@ program
     const data = await updateItem(boardId, itemId, parseColumns(opts.column));
     if (opts.json) return printJson(data.change_multiple_column_values);
     console.log(`Updated item ${data.change_multiple_column_values.id}`);
+  });
+
+program
+  .command("delete <itemId...>")
+  .description("Delete one or more items (irreversible — moves past monday's trash)")
+  .option("--json", "raw JSON output")
+  .action(async (itemIds: string[], opts: { json?: boolean }) => {
+    const deleted: string[] = [];
+    for (const id of itemIds) {
+      const data = await deleteItem(id);
+      deleted.push(data.delete_item.id);
+    }
+    if (opts.json) return printJson({ deleted });
+    console.log(`Deleted ${deleted.length} item(s): ${deleted.join(", ")}`);
   });
 
 program.parseAsync().catch((err: unknown) => {
