@@ -16,13 +16,6 @@ monday.com ships an official MCP server and an official CLI (`mapps`), but the l
 npm install -g mondayctl
 ```
 
-> **Note:** not yet published to npm. For now, install from source:
->
-> ```sh
-> git clone https://github.com/Rozzeo/mondayctl
-> cd mondayctl
-> npm install && npm run build && npm link
-> ```
 
 Requires Node.js >= 20.
 
