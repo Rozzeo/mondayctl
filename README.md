@@ -29,8 +29,8 @@ In monday.com: click your avatar → **Developers** → **My access tokens** →
 
 ```console
 $ mondayctl auth eyJhbGciOiJIUzI1NiJ9...
-Authenticated as Roza Tushevski <rozzetush@gmail.com> (Acme Inc)
-Token saved to /home/roza/.config/mondayctl/config.json
+Authenticated as Jane Doe <jane@example.com> (Acme Inc)
+Token saved to ~/.config/mondayctl/config.json
 ```
 
 ### 3. Explore boards and items
