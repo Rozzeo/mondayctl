@@ -1,6 +1,13 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { gql, listItems, MondayError } from "../src/api.js";
 
+// Mock the config module so tests never depend on the developer's real
+// ~/.config/mondayctl/config.json or environment.
+let token: string | null = "test-token";
+vi.mock("../src/config.js", () => ({
+  getToken: () => token,
+}));
+
 function mockFetch(payload: unknown, status = 200) {
   return vi.fn(async () => ({
     ok: status >= 200 && status < 300,
@@ -11,12 +18,11 @@ function mockFetch(payload: unknown, status = 200) {
 }
 
 beforeEach(() => {
-  process.env.MONDAY_API_TOKEN = "test-token";
+  token = "test-token";
 });
 
 afterEach(() => {
-  delete process.env.MONDAY_API_TOKEN;
-  vi.restoreAllMocks();
+  vi.unstubAllGlobals();
 });
 
 describe("gql", () => {
@@ -37,7 +43,13 @@ describe("gql", () => {
   });
 
   it("fails fast without a token", async () => {
-    delete process.env.MONDAY_API_TOKEN;
+    token = null;
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() => {
+        throw new Error("fetch must not be called without a token");
+      }),
+    );
     await expect(gql("query {}")).rejects.toThrow(/mondayctl auth/);
   });
 
