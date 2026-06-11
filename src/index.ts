@@ -3,17 +3,21 @@
 // Design contract: every data command supports --json with stable output, so
 // the tool composes with jq, scripts, CI, and AI agents without screen-scraping.
 
+import { createRequire } from "node:module";
 import { Command } from "commander";
 import { createItem, deleteItem, listBoards, listColumns, listItems, me, MondayError, updateItem } from "./api.js";
 import { saveToken } from "./config.js";
 import { parseColumns, printJson, printTable } from "./format.js";
+
+// Single source of truth for the version — `npm version` bumps package.json.
+const pkg = createRequire(import.meta.url)("../package.json") as { version: string };
 
 const program = new Command();
 
 program
   .name("mondayctl")
   .description("CLI for monday.com: boards, items, search, create, update")
-  .version("0.1.0");
+  .version(pkg.version);
 
 program
   .command("auth <token>")
