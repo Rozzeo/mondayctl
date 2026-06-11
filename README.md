@@ -19,7 +19,7 @@ npm install -g mondayctl
 > **Note:** not yet published to npm. For now, install from source:
 >
 > ```sh
-> git clone https://github.com/<you>/mondayctl
+> git clone https://github.com/Rozzeo/mondayctl
 > cd mondayctl
 > npm install && npm run build && npm link
 > ```

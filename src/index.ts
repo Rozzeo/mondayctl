@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // mondayctl — gh-style CLI for monday.com boards and items.
-// Design contract: every command supports --json with stable output, so the
-// tool composes with jq, scripts, CI, and AI agents without screen-scraping.
+// Design contract: every data command supports --json with stable output, so
+// the tool composes with jq, scripts, CI, and AI agents without screen-scraping.
 
 import { Command } from "commander";
 import { createItem, listBoards, listColumns, listItems, me, MondayError, updateItem } from "./api.js";
