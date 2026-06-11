@@ -4,6 +4,12 @@
   "description": "gh-style CLI for monday.com boards and items. Agent-friendly: stable JSON output, zero token overhead.",
   "type": "module",
   "license": "MIT",
+  "author": "Roza Bass",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rozzeo/mondayctl.git"
+  },
+  "homepage": "https://github.com/Rozzeo/mondayctl#readme",
   "bin": {
     "mondayctl": "./dist/index.js"
   },
